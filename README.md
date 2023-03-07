@@ -1,4 +1,6 @@
-# RedeSocialEventos_AT
+# EVENTOPIA
+Eventopia is a social media for people who want to know about local events in their city and socialize with their friends.
+
 This Project is work in progress, for my course at the university.
 The objective is demonstrating the abilities with Web API Development and this api will be consumed
 by a Web ASP .NET MVC project.
