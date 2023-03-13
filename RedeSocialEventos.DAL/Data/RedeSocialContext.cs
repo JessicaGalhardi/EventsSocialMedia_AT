@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
@@ -10,14 +12,27 @@ using Microsoft.Extensions.Configuration;
 
 namespace RedeSocialEventos.DAL.Data
 {
-    public class RedeSocialContext : DbContext
+    //Add Identity to the DBContext
+    public class RedeSocialContext : IdentityDbContext<IdentityUser>
+
     {
 
         public RedeSocialContext(DbContextOptions<RedeSocialContext> options) : base(options) { }
 
         public DbSet<Usuario> usuarios { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<Usuario>(entity =>
+            {
+                entity.ToTable(name: "Usuarios");
+            });
+        }
     }
 
+    //Add Factory to application
     public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<RedeSocialContext>
     {
         public RedeSocialContext CreateDbContext(string[] args)
@@ -32,5 +47,11 @@ namespace RedeSocialEventos.DAL.Data
             return new RedeSocialContext(builder.Options);
 
         }
+
+
+
     }
+
+
 }
+

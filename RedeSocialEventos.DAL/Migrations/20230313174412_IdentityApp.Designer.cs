@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RedeSocialEventos.DAL.Data;
 
@@ -11,9 +12,10 @@ using RedeSocialEventos.DAL.Data;
 namespace RedeSocialEventos.DAL.Migrations
 {
     [DbContext(typeof(RedeSocialContext))]
-    partial class RedeSocialContextModelSnapshot : ModelSnapshot
+    [Migration("20230313174412_IdentityApp")]
+    partial class IdentityApp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
